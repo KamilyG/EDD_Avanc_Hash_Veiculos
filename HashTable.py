@@ -15,7 +15,7 @@ class HashTable:
 
         else: #se não haver slots vazios mas achar um que a chave for igual ela vai fazer replace pelo novo dado
             if self.vet[indicehash] == key:
-                self.dado[indicehash] = dado  #replace
+                print("Não é possível fazer essa inserçõa, o registor já existe!\n") #replace
 
             else: #aqui faz a sondagem linear
                 proxvet = self.rehash(indicehash,len(self.vet))
@@ -61,6 +61,7 @@ class HashTable:
         if self.vet[indicehash] == key:
             self.vet[indicehash] = 'empty'
             self.dado[indicehash] = 'empty'  #replace
+            print("Item " + key + ", removido com sucesso!\n")
 
         else: #aqui faz a sondagem linear
             proxvet = self.rehash(indicehash,len(self.vet))
@@ -70,8 +71,9 @@ class HashTable:
             if self.vet[proxvet] == key:
                 self.vet[proxvet] = 'empty'
                 self.dado[proxvet] = 'empty'
+                print("Item " + key + ", removido com sucesso!\n")
             else:
-                print("Não foi possível encontrar o índice da chave informada e removê-lo!")
+                print("Não foi possível encontrar o índice da chave informada e removê-lo!\n")
     
     def table(self):
         for item in self.vet:            
@@ -85,8 +87,14 @@ class HashTable:
                 indice = self.dado.index(item)
                 print("[{}] = {}".format(indice, item))
 
-    def getdadositem(self, key):
-        return key, self.get(key)
+    def tabledados(self):
+        for item in self.vet:            
+            if item != '':
+                if item != None and item != 'empty':
+                    print("[{}] = {}".format(item, self.get(item)))
+                elif item == None:
+                    print("[{}] = {}".format(item, item))
+
 
     def __getitem__(self,key):
         return self.get(key)

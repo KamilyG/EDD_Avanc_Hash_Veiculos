@@ -6,7 +6,7 @@ class Veiculo:
         self.cor = cor
 
     def __str__(self):
-        return '{} {} {}'.format(self.placa, self.ano, self.marca_modelo, self.cor)
+        return 'Placa: {}; Ano: {}; Marca/Modelo: {}; Cor: {};'.format(self.placa, self.ano, self.marca_modelo, self.cor)
     
     def __repr__(self):
-        return '{} {} {}'.format(self.placa, self.ano, self.marca_modelo, self.cor)
+        return '{} {} {} {}'.format(self.placa, self.ano, self.marca_modelo, self.cor)

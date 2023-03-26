@@ -1,8 +1,65 @@
-#Criar uma estrutura do tipo chave-valor usando tabela hash
-#Adaptar os códigos existentes, criar um menu e incluir operações para:
-    #o Exibir o vetor completo, para fins de debug
-    #o Busca por placa única, trazendo todos os dados vínculos de maneira formatada.
-    #o Inserção (não permitindo a repetição de uma mesma placa)
-    #o Exclusão de uma placa
+#Deverá apresentar o seguinte teste, em uma execução:
+#▪ 10 inserções | print do vetor
+#▪ 5 exclusões | print do vetor
+#▪ 3 inserções | print do vetor
 
-# CONFERIR PDF PARA TODAS AS ESPECIFICAÇÕES!!!
+import os
+from Veiculo import Veiculo
+from HashTable import HashTable
+
+hashtable = HashTable()
+
+cadastrar = True
+while cadastrar == True:
+    print("#################### MENU ####################")
+    print("1 - Inserir\n"
+        "2 - Remover\n"
+        "3 - Verificar por Placa\n"
+        "4 - Ver todas as informações contidas na lista\n"
+        "0 - Sair\n")
+    print("Escolha o que você deseja fazer:")
+
+    option = input()
+    os.system("cls")
+
+    #inserir
+    if option == "1":
+        print("Informe a placa: ")
+        placa = input()
+        print("Informe o ano: ")
+        ano = input()
+        print("Informe a marca e o modelo: ")
+        marcamodelo = input()
+        print("Informe a cor: ")
+        cor = input()
+
+        os.system("cls")
+
+        veiculo = Veiculo(placa, ano, marcamodelo, cor)
+        #adiciona no hash, placa é a key, string é o dado/informação que já vai formatado
+        hashtable.__setitem__(veiculo.placa, veiculo.__str__())
+
+    #remover
+    elif option == "2":
+        print("Informe a placa do veículo que deseja remover da lista: ")
+        placa = input()
+        hashtable.remove(placa)
+
+    #ver por placa
+    elif option == "3":
+        print("Informe a placa do veículo que deseja ver: ")
+        placa = input()
+        #print placa e dados da placa
+        print(hashtable.__getitem__(placa))
+
+    #ver todas as placas e informações por placa
+    elif option == "4":
+        hashtable.tabledados()
+
+    #sair
+    elif option == "0":
+        exit()
+
+    #caso especial
+    else:
+        print("Entrada inválida!")
