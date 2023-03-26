@@ -1,17 +1,15 @@
-
-#   ATENÇÃO!!! chaves inteiras e valores de dados de string É O QUE ESSE HASHTABLE CONSIDERA, 
-#               VERIFICAR PARA A CHAVE PODER SER STRING (já que vai se tratar de placa de carro) ou seja, mudar a hashfunction!!
 class HashTable:
     def __init__(self):
         self.size = 29
         self.vet = [None] * self.size
         self.dado = [None] * self.size
 
+    #insere o dado a partir da chave e dado
     def put(self,key,dado):
         key = key.lower()
         indicehash = self.hashfunction(key,len(self.vet))
 
-        if self.vet[indicehash] == None:
+        if self.vet[indicehash] == None or self.vet[indicehash] == 'empty':
             self.vet[indicehash] = key
             self.dado[indicehash] = dado
 
@@ -21,10 +19,10 @@ class HashTable:
 
             else: #aqui faz a sondagem linear
                 proxvet = self.rehash(indicehash,len(self.vet))
-                while self.vet[proxvet] != None and self.vet[proxvet] != key:
+                while self.vet[proxvet] != None and self.vet[proxvet] != key and self.vet[proxvet] != 'empty':
                     proxvet = self.rehash(proxvet,len(self.vet))
 
-                if self.vet[proxvet] == None:
+                if self.vet[proxvet] == None or self.vet[proxvet] == 'empty':
                     self.vet[proxvet] = key
                     self.dado[proxvet] = dado
                 else:
@@ -36,6 +34,7 @@ class HashTable:
     def rehash(self,oldhash,size):
         return (oldhash+1) % size
 
+    #pega o dado a partir da chave
     def get(self,key):
         key = key.lower()
         startslot = self.hashfunction(key,len(self.vet))
@@ -55,24 +54,42 @@ class HashTable:
                     stop = True
         return dado
     
+    def remove(self, key):
+        key = key.lower()
+        indicehash = self.hashfunction(key,len(self.vet))
+
+        if self.vet[indicehash] == key:
+            self.vet[indicehash] = 'empty'
+            self.dado[indicehash] = 'empty'  #replace
+
+        else: #aqui faz a sondagem linear
+            proxvet = self.rehash(indicehash,len(self.vet))
+            while self.vet[proxvet] != None and self.vet[proxvet] != key:
+                proxvet = self.rehash(proxvet,len(self.vet))
+
+            if self.vet[proxvet] == key:
+                self.vet[proxvet] = 'empty'
+                self.dado[proxvet] = 'empty'
+            else:
+                print("Não foi possível encontrar o índice da chave informada e removê-lo!")
+    
     def table(self):
         for item in self.vet:            
             if item != '':
                 indice = self.vet.index(item)
                 print("[{}] = {}".format(indice, item))
 
+    def dados(self):
+        for item in self.dado:            
+            if item != '':
+                indice = self.dado.index(item)
+                print("[{}] = {}".format(indice, item))
+
+    def getdadositem(self, key):
+        return key, self.get(key)
+
     def __getitem__(self,key):
         return self.get(key)
 
     def __setitem__(self,key,dado):
         self.put(key,dado)
-
-tb = HashTable()
-tb.__setitem__('HKI3568', 'certo')
-tb.__setitem__('HKI3588', 'certo2')
-tb.__setitem__('HKI3578', 'certo3')
-print(tb.__getitem__('HKI3568'))
-print(tb.__getitem__('HKI3588'))
-print(tb.__getitem__('HKI3578'))
-tb.table()
-
