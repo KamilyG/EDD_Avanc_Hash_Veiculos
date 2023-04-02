@@ -2,32 +2,8 @@
 <h5 align="center">Cadastro de informações de veículos usando tabela de Espalhamento (hash) na linguagem Python.</h5>
 
 ## :white_check_mark: Execução 
-Para executar os testes foram usadas as seguinte placas na seguinte ordem:
-```sh
-Inserir placas:
-NEX-0196
-JFS-7272
-NAL-7556
-ANX-1565
-IAL-0831
-MXY-7202
-KEE-6341
-NAK-4280
-ASL-1246
-ALV-4461
-
-Remover placas:
-NEX-0196
-JFS-7272
-NAL-7556
-ANX-1565
-IAL-0831
-
-Inserir placas:
-NDI-5992
-IEY-2538
-BST-5572
-```
+> Arquivo main.py contém o menu para uso interativo da tabela.  
+> Para executar os testes pode-se rodar o arquivo teste.py, no qual foram feitas inserções e remoções com print da situação da Hashtable em cada momento.
 
  
  ## :pushpin: Referências
