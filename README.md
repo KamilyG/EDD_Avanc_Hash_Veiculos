@@ -2,8 +2,8 @@
 <h5 align="center">Cadastro de informações de veículos usando tabela de Espalhamento (hash) na linguagem Python.</h5>
 
 ## :white_check_mark: Execução 
-> Arquivo main.py contém o menu para uso interativo da tabela.  
-> Para executar os testes pode-se rodar o arquivo teste.py, no qual foram feitas inserções e remoções com print da situação da Hashtable em cada momento.
+> Arquivo [main.py](https://github.com/KamilyG/EDD_Avanc_Hash_Veiculos/blob/main/main.py) contém o menu para uso interativo da tabela.  
+> Para executar os testes pode-se rodar o arquivo [teste.py](https://github.com/KamilyG/EDD_Avanc_Hash_Veiculos/blob/main/teste.py), no qual são feitas inserções e remoções com print da situação da tabela em cada momento.
 
  
  ## :pushpin: Referências
