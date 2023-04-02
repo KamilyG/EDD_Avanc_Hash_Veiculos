@@ -1,8 +1,3 @@
-#Deverá apresentar o seguinte teste, em uma execução:
-#▪ 10 inserções | print do vetor
-#▪ 5 exclusões | print do vetor
-#▪ 3 inserções | print do vetor
-
 import os
 from Veiculo import Veiculo
 from HashTable import HashTable
